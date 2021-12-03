@@ -1,0 +1,4 @@
+requests
+pytest
+clickhouse-driver[lz4]
+uuid
