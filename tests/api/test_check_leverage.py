@@ -13,9 +13,7 @@ def test_unl_leverage(uuid,status):
     base_uri = 'https://ntapi-core-rke.test.env/api'
     url = f"{base_uri}/users/{uuid}/check_unlim_leverage/"
 
-    response = requests.request("GET", url, verify=False,
-                                cert=("/Users/marlonrocha/Documents/cert_key/core-solutions.exness.test.crt",
-                                      "/Users/marlonrocha/Documents/cert_key/core-solutions.exness.test.key"))
+    response = requests.request("GET", url, verify=False)
 
     assert response.status_code == 200
 
@@ -37,15 +35,13 @@ def test_create_new_user():
     } 
     
 
-    response = requests.request("POST", url, data=payload, verify=False,
-                                cert=("core-solutions.exness.test.crt", "core-solutions.exness.test.key"))
+    response = requests.request("POST", url, data=payload, verify=False)
 
     assert response.status_code == 200
 
     url = f"{base_uri}/users/{payload['user_uid']}/check_unlim_leverage/"
 
-    response = requests.request("GET", url, verify=False,
-                                cert=("core-solutions.exness.test.crt", "core-solutions.exness.test.key"))
+    response = requests.request("GET", url, verify=False)
 
     assert response.status_code == 200
 
